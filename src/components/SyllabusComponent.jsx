@@ -31,7 +31,10 @@ const SyllabusComponent = () => {
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100 h-fit p-6">
      <ToastContainer />
       <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg mt-24 h-fit w-full">
-         <h1 className="text-2xl font-bold mb-6">Fetch GTU Syllabus</h1>
+         <h1 className="text-2xl font-bold mb-6">Fetch GTU Syllabus 
+         <span className="text-sm text-stone-500">(For all Branch)</span>
+         </h1>
+         
         <div className="mb-4">
           <label className="block text-gray-700 font-medium mb-2" htmlFor="subjectCode">
             Enter Subject Code
