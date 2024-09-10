@@ -54,7 +54,7 @@ const Navbar = () => {const showElement = (
               alt="Flowbite Logo"
             />
             <span className="self-center text-[16px] font-semibold whitespace-nowrap dark:text-white">
-              Gtu Paper & Syllabus Downloader
+              Gtu Downloader
             </span>
           </Link>
           <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
@@ -100,7 +100,7 @@ const Navbar = () => {const showElement = (
               <li>
                 <Link
                   to="/"
-                  className="block py-2 px-3 text-white bg-gray-50 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+                  className="block py-2 px-3 text-white bg-gray-50 rounded md:bg-transparent md:p-0 hover:text-blue-500"
                   aria-current="page"
                 >
                   Home
