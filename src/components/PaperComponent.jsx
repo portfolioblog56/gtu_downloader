@@ -35,7 +35,9 @@ const PaperComponent = () => {
       <ToastContainer />
       
       <div className="bg-white mt-24 p-6 rounded-lg shadow-lg max-w-lg h-fit w-full">
-        <h1 className="text-2xl font-bold mb-6">Fetch GTU Papers</h1>
+        <h1 className="text-2xl font-bold mb-6">Fetch GTU Papers <br />
+        <span className="text-sm text-stone-500">Only For BE(Engineering For now) Other branch coming soon.</span>
+        </h1>
         <div className="mb-4">
           <label
             className="block text-gray-700 font-medium mb-2"
