@@ -6,6 +6,7 @@ import PaperComponent from './components/PaperComponent';
 import SyllabusComponent from './components/SyllabusComponent';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import MidPaper from './components/MidPaper';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -44,6 +45,7 @@ function App() {
               <Route path="/" element={<HomeComponent />} />
               <Route path="/paper" element={<PaperComponent />} />
               <Route path="/syllabus" element={<SyllabusComponent />} />
+              <Route path="/mid" element={<MidPaper />} />
             </Routes>
           )}
         </div>
