@@ -20,6 +20,13 @@ const DownloadLinks = () => {
       </button>
       <span>|</span>
       <button
+        onClick={() => handleDownload('/mid')}
+        className="btn text-blue-700 hover:underline"
+      >
+       Mid Paper(New)
+      </button>
+      <span>|</span>
+      <button
         onClick={() => handleDownload('/syllabus')}
         className="btn text-blue-700 hover:underline"
       >
