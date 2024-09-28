@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'; 
+
 const PaperComponent = () => {
   const [season, setSeason] = useState("W");
   const [year, setYear] = useState("2023");
   const [subjectCode, setSubjectCode] = useState("");
   const [pdfUrl, setPdfUrl] = useState("");
+  const [isFetching, setIsFetching] = useState(false); // New state variable
 
   const handleFetchPDF = () => {
     if (subjectCode.length < 5 || subjectCode.length > 7) {
@@ -19,14 +21,29 @@ const PaperComponent = () => {
         position: "bottom-right",
         timeout: 1000,
       });
-      const url = `https://www.gtu.ac.in/uploads/${season}${year}/BE/${subjectCode}.pdf`;
+      const url = `${import.meta.env.VITE_GTU_PAPER_URL}/${season}${year}/BE/${subjectCode}.${import.meta.env.VITE_GTU_EXTENSION}`;
       setPdfUrl(url);
-    } else{
+    } else {
       toast.error("Gtu Nu server ho apdo code sacho j che bhai", {
         position: "bottom-right",
         timeout: 3000,
       });
     }
+
+    // Set fetching state to true when fetching PDF
+    setIsFetching(true);
+  };
+
+  const handleInputChange = (e) => {
+    const { value, id } = e.target;
+    if (id === "subjectCode") {
+      setSubjectCode(value);
+    } else if (id === "season") {
+      setSeason(value);
+    } else if (id === "year") {
+      setYear(value);
+    }
+    setIsFetching(false); // Enable the button when input changes
   };
 
   return (
@@ -48,7 +65,7 @@ const PaperComponent = () => {
           <select
             id="season"
             value={season}
-            onChange={(e) => setSeason(e.target.value)}
+            onChange={handleInputChange} // Updated to use new handler
             className="w-full p-2 border border-gray-300 rounded"
           >
             <option value="W">Winter</option>
@@ -65,7 +82,7 @@ const PaperComponent = () => {
           <select
             id="year"
             value={year}
-            onChange={(e) => setYear(e.target.value)}
+            onChange={handleInputChange} // Updated to use new handler
             className="w-full p-2 border border-gray-300 rounded"
           >
             {Array.from({ length: new Date().getFullYear() - 2017 }, (_, i) => (
@@ -86,14 +103,15 @@ const PaperComponent = () => {
               id="subjectCode"
               type="text"
               value={subjectCode}
-              onChange={(e) => setSubjectCode(e.target.value)}
+              onChange={handleInputChange} // Updated to use new handler
               className="w-full p-2 border border-gray-300 rounded"
               placeholder="e.g., 3171609"
             />
           </div>
           <button
             onClick={handleFetchPDF}
-            className="w-full bg-blue-600 text-white font-medium p-2 rounded hover:bg-blue-700"
+            className={`w-full ${isFetching ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'} text-white font-medium p-2 rounded`}
+            disabled={isFetching} // Disable button based on isFetching state
           >
             Fetch PDF
           </button>
