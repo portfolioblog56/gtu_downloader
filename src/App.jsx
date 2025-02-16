@@ -7,6 +7,7 @@ import SyllabusComponent from './components/SyllabusComponent';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MidPaper from './components/MidPaper';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -31,6 +32,7 @@ function App() {
 
   return (
     <Router>
+<SpeedInsights/>
       <Navbar />
       <Fragment className="overflow-hidden">
         <div className="p-2 mt-4">
