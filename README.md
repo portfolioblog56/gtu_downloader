@@ -1,1 +1,1 @@
-# gtu_downloader
+# gtu-paper-syllabus-downloader
